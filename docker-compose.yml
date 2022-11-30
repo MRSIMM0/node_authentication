@@ -1,0 +1,42 @@
+version: '3.7'
+services:
+    db:
+        image: postgres:10.5
+        restart: always
+ 
+        environment:
+          - POSTGRES_PASSWORD=${DB_PASSWORD}
+          - POSTGRES_DB=${DB_NAME}
+          
+        ports:
+          - '5433:${DB_PORT}'
+        volumes: 
+          - ./postgres-data:/var/lib/postgresql/data
+
+        networks:
+          - postgres-network
+
+    ts-node-docker:
+      build:
+        context: ./
+        dockerfile: Dockerfile
+
+      depends_on:
+        - db
+      volumes:
+        - ./src:/home/node/app/src
+        - ./nodemon.json:/home/node/app/nodemon.json
+      container_name: ts-node-docker
+      expose:
+        - '4000'
+      ports:
+        - '4000:4000'
+      command: npm run start:dev
+      networks:
+        - postgres-network
+
+
+
+networks:
+  postgres-network:
+
