@@ -1,0 +1,24 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="2" author="MRSIMM0">
+        <createTable tableName="token">
+            <column name="id"  type="bigint"  ><constraints primaryKey="true" primaryKeyName="tokenId" nullable="false" ></constraints></column>
+            <column name="token" type="VARCHAR(255)"></column>
+            <column name="cuser_id" type="bigint"></column>
+        </createTable>
+        <addAutoIncrement tableName="token" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1"></addAutoIncrement>
+        <createSequence sequenceName="token_id_seq" incrementBy="1" startValue="1"></createSequence>
+
+
+        <addForeignKeyConstraint 
+        constraintName="fk_token_user_id"
+        baseTableName="token"
+        baseColumnNames="cuser_id"
+        referencedTableName="cuser"
+        referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>
