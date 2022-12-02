@@ -10,6 +10,8 @@ import {encode} from "../security/passwordEncoder"
 
 import {generateActivationKey} from "../security/activationLink"
 
+import sendMail from "../utils/mailer"
+
 const database:Database = Database.getInstance();
 
 router.post('/register',async (req,res)=>{
@@ -32,7 +34,8 @@ router.post('/register',async (req,res)=>{
 
     database.saveToknen(createduser.id,token);
 
-    res.send("http://localhost:3000/activate/"+token);
+    sendMail("activation","http://localhost:3000/activate/"+token,data.email)
+    res.send();
 
 
 })
