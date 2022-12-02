@@ -1,0 +1,22 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="0" author="MRSIMM0">
+        <createTable tableName="cuser">
+            <column name="id" type="bigint" ><constraints primaryKey="true" primaryKeyName="userId" nullable="false" ></constraints></column>
+
+            <column name="username" type="VARCHAR(255)" />
+
+            <column name="password" type="VARCHAR(255)" />
+
+            <column name="email" type="VARCHAR(255)" />
+
+            <column name="active" type="Boolean"></column>
+        </createTable>
+        <createSequence sequenceName="cuser_id_seq" incrementBy="1" startValue="1"></createSequence>
+        <addAutoIncrement tableName="cuser" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1"></addAutoIncrement>
+    </changeSet>
+</databaseChangeLog>
