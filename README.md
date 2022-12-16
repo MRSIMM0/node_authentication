@@ -20,10 +20,9 @@ To run application use ***docker compose up***. Then required containers will be
 
 body:
 
-```json
-
+```
 {
-		username:string,
+	username:string,
     email:string,
     password:string
 }
@@ -33,9 +32,9 @@ body:
 
 body:
 
-```json
+```
 {
-		email:string,
+	email:string,
     password:string
 }
 ```
@@ -44,7 +43,7 @@ body:
 
 body:
 
-```json
+```
 {
 	email:string
 }
