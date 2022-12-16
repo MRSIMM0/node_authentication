@@ -22,9 +22,9 @@ body:
 
 ```
 {
-	username:string,
-    email:string,
-    password:string
+username:string,
+email:string,
+password:string
 }
 ```
 
@@ -34,8 +34,8 @@ body:
 
 ```
 {
-	email:string,
-    password:string
+email:string,
+password:string
 }
 ```
 
@@ -45,6 +45,6 @@ body:
 
 ```
 {
-	email:string
+email:string
 }
 ```
